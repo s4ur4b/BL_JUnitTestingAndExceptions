@@ -21,7 +21,7 @@ import java.util.regex.Pattern;
 public class UserRegestration {
     Scanner scan = new Scanner(System.in);
 
-    public boolean checkName(String name) throws UserRegException {
+     UserRegistrationInterface nameValidation = (String name) ->  {
 
         String nameRegex = "^[A-Z]{1}[a-z]{2,15}$";
 
@@ -34,9 +34,9 @@ public class UserRegestration {
         }
         return matcher.matches();
 
-    }
+    };
 
-    public boolean checkLastName(String lastName) throws UserRegException {
+    UserRegistrationInterface lastNameVallidation = (String lastName) -> {
 
         String nameRegex = "^[A-Z]{1}[a-z]{2,15}$";
 
@@ -48,9 +48,9 @@ public class UserRegestration {
             throw new UserRegException("Last Name is Invalid");
         }
         return matcher.matches();
-    }
+    };
 
-    public boolean checkEmail(String email) {
+    UserRegistrationInterface checkEmail = (String email) -> {
 
         String emailRegex = "^[a-zA-Z0-9]+.[a-zA-Z0-9+_-]+@[a-zA-Z0-9+_-]+.[a-z]+.[a-z]+$";
 //        String emailRegex = "^[a-zA-Z0-9]+.[a-zA-Z0-9+_-]+@[a-zA-Z0-9+_-]+.[a-z.]+$";
@@ -67,7 +67,7 @@ public class UserRegestration {
             }
         }
         return matcher.matches();
-    }
+    };
 
     void checkPhone() {
         System.out.println("Enter Your phone number");
@@ -85,7 +85,7 @@ public class UserRegestration {
         }
     }
 
-    public boolean checkPassword(String password) throws UserRegException {
+    UserRegistrationInterface checkPassword = (String password) -> {
 
         String Regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!#%*?&])[A-Za-z\\d@$!#%*?&]{8,}$";
 
@@ -95,6 +95,6 @@ public class UserRegestration {
             throw new UserRegException("Password is Invalid");
         }
         return result;
-    }
+    };
 
 }

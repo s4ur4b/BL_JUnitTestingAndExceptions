@@ -22,7 +22,7 @@ public class UserRegestrationTesting {
         UserRegestration userRegestration = new UserRegestration();
         boolean actual = false;
         try {
-            actual = userRegestration.checkName(sampleName);
+            actual = userRegestration.nameValidation.validateEntry(sampleName);
         } catch (UserRegException e) {
             System.out.println(e);
         }
@@ -37,7 +37,7 @@ public class UserRegestrationTesting {
         UserRegestration userRegestration = new UserRegestration();
         boolean actual = false;
         try {
-            actual = userRegestration.checkName(sampleName);
+            actual = userRegestration.nameValidation.validateEntry(sampleName);
         } catch (UserRegException e) {
             System.out.println(e);
         }
@@ -52,7 +52,7 @@ public class UserRegestrationTesting {
         UserRegestration userRegestration = new UserRegestration();
         boolean actual = false;
         try {
-            actual = userRegestration.checkLastName(sampleLastName);
+            actual = userRegestration.lastNameVallidation.validateEntry(sampleLastName);
         } catch (UserRegException e) {
             System.out.println(e);
         }
@@ -66,7 +66,7 @@ public class UserRegestrationTesting {
         UserRegestration userRegestration = new UserRegestration();
         boolean actual = false;
         try {
-            actual = userRegestration.checkLastName(sampleLastName);
+            actual = userRegestration.lastNameVallidation.validateEntry(sampleLastName);
         } catch (UserRegException e) {
             System.out.println(e);
         }
@@ -81,7 +81,7 @@ public class UserRegestrationTesting {
         UserRegestration userRegestration = new UserRegestration();
         boolean actual = false;
         try {
-            actual = userRegestration.checkPassword(samplePassword);
+            actual = userRegestration.checkPassword.validateEntry(samplePassword);
         } catch (UserRegException e) {
             System.out.println(e);
         }
@@ -95,7 +95,7 @@ public class UserRegestrationTesting {
         UserRegestration userRegestration = new UserRegestration();
         boolean actual = false;
         try {
-            actual = userRegestration.checkPassword(samplePassword);
+            actual = userRegestration.checkPassword.validateEntry(samplePassword);
         } catch (UserRegException e) {
             System.out.println(e);
         }
@@ -108,7 +108,11 @@ public class UserRegestrationTesting {
         String sampleEmail = "abc.xyz6@bl.co.in";
 
         UserRegestration userRegestration = new UserRegestration();
-        boolean actual = userRegestration.checkEmail(sampleEmail);
+        try {
+            boolean actual = userRegestration.checkEmail.validateEntry(sampleEmail);
+        } catch (UserRegException e) {
+            System.out.println(e);
+        }
 
     }
 
@@ -118,7 +122,11 @@ public class UserRegestrationTesting {
         String sampleEmail = "saurabhChavan@khj.354";
 
         UserRegestration userRegestration = new UserRegestration();
-        boolean actual = userRegestration.checkEmail(sampleEmail);
+        try {
+            boolean actual = userRegestration.checkEmail.validateEntry(sampleEmail);
+        } catch (UserRegException e) {
+            System.out.println(e);
+        }
 
     }
 
@@ -130,9 +138,11 @@ public class UserRegestrationTesting {
     public void validateEmailList(String input){
 
         UserRegestration userRegestration = new UserRegestration();
-        boolean actual = userRegestration.checkEmail(input);
-
-        assertEquals(true,actual);
+        try {
+            boolean actual = userRegestration.checkEmail.validateEntry(input);
+        } catch (UserRegException e) {
+            System.out.println(e);
+        }
 
     }
 
@@ -144,9 +154,11 @@ public class UserRegestrationTesting {
     public void validateEmailListNegative(String input) {
 
         UserRegestration userRegestration = new UserRegestration();
-        boolean actual = userRegestration.checkEmail(input);
-
-        assertEquals(false, actual);
+        try {
+            boolean actual = userRegestration.checkEmail.validateEntry(input);
+        } catch (UserRegException e) {
+            System.out.println(e);
+        }
 
     }
 }
